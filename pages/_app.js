@@ -4,7 +4,7 @@ import { StoreProvider } from '../utils/Store';
 import { useRouter } from 'next/router';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
-import { Barlow, Inter, Josefin_Sans, Open_Sans, Roboto } from '@next/font/google'
+import { Barlow, Josefin_Sans } from '@next/font/google'
 
 // If loading a variable font, you don't need to specify the font weight
 

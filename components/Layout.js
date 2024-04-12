@@ -10,6 +10,7 @@ import { Store } from '../utils/Store';
 import DropdownLink from './DropdownLink';
 import { useRouter } from 'next/router';
 import SearchIcon from '@heroicons/react/24/outline/MagnifyingGlassIcon';
+import Image from 'next/image';
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -57,7 +58,7 @@ export default function Layout({ title, children }) {
         <header className="bg-primary-dark z-10 fixed w-full">
           <nav className={`flex h-12 items-center px-4 justify-between shadow-md `}>
             <Link href="/" className="text-lg font-bold">
-              <img src="/logo.svg" alt="Hot Mamas Logo" width={100} height={40} />
+              <Image src="/logo.png" alt="HotMamas" width={50} height={50} />
             </Link>
             <form
               onSubmit={submitHandler}
