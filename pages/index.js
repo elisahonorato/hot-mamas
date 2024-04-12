@@ -8,9 +8,11 @@ import { Store } from '../utils/Store';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import InfiniteScrollProducts from '../components/InfiniteScrollProducts';
 
-export default function Home({ products }) {
+export default function Home({ products, featuredProducts }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
+
+  console.log(products, featuredProducts);
 
   const addToCartHandler = async (product) => {
     const existItem = cart.cartItems.find((x) => x.slug === product.slug);

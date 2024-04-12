@@ -2,7 +2,6 @@ import React, { useRef, useEffect} from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
 import { FaCartPlus } from "@react-icons/all-files/fa/FaCartPlus";
-import Image from 'next/image';
 
 export default function ProductItem({ product, addToCartHandler }) {
   const cardRef = useRef(null);
@@ -30,7 +29,7 @@ export default function ProductItem({ product, addToCartHandler }) {
     <div ref={cardRef} className="flex flex-col border z-0 m-1 rounded-full">
       <div>
         <Link href={`/product/${product.slug}`}>
-          <Image
+          <img
             src={product.image}
             alt={product.name}
             className="rounded shadow object-cover h-96 w-full"

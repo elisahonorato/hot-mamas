@@ -58,7 +58,7 @@ export default function Layout({ title, children }) {
         <header className="bg-primary-dark z-10 fixed w-full">
           <nav className={`flex h-12 items-center px-4 justify-between shadow-md `}>
             <Link href="/" className="text-lg font-bold">
-              <Image src="/logo.png" alt="HotMamas" width={50} height={50} />
+              <Image src="/logo.svg" alt="HotMamas" width={50} height={50} />
             </Link>
             <form
               onSubmit={submitHandler}
