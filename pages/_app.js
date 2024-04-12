@@ -4,17 +4,32 @@ import { StoreProvider } from '../utils/Store';
 import { useRouter } from 'next/router';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
+import { Barlow, Inter, Josefin_Sans, Open_Sans, Roboto } from '@next/font/google'
+
+// If loading a variable font, you don't need to specify the font weight
+
+const headingFont = Josefin_Sans({ subsets: ['latin'], variable: '--font-heading' });
+const bodyFont = Barlow({ subsets: ['latin'], variable: '--font-body', weight: ['500', '700'] });
+
+
+
+
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <StoreProvider>
         <PayPalScriptProvider deferLoading={true}>
+
           {Component.auth ? (
             <Auth adminOnly={Component.auth.adminOnly}>
+            <main className={`${headingFont.className} ${bodyFont.className}`}>
               <Component {...pageProps} />
+            </main>
             </Auth>
           ) : (
-            <Component {...pageProps} />
+            <main className={`${headingFont.className} ${bodyFont.className}`}>
+              <Component {...pageProps} />
+            </main>
           )}
         </PayPalScriptProvider>
       </StoreProvider>

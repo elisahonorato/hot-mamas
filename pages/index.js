@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import Layout from '../components/Layout';
 import ProductItem from '../components/ProductItem';
 import Product from '../models/Product';
@@ -9,6 +9,7 @@ import { Store } from '../utils/Store';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Link from 'next/link';
+import InfiniteScrollProducts from '../components/InfiniteScrollProducts';
 
 export default function Home({ products, featuredProducts }) {
   const { state, dispatch } = useContext(Store);
@@ -23,31 +24,25 @@ export default function Home({ products, featuredProducts }) {
       return toast.error('Sorry. Product is out of stock');
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    toast.className = 'text-primary-light bg-colored-light p-1 rounded-lg';
+    ToastContainer.className = 'text-primary-light bg-colored-light p-1 rounded-lg';
 
-    toast.success('Product added to the cart');
+
+    toast.success(
+      `${product.name} added to cart. Total items: ${cart.cartItems.length + 1}`
+    );
   };
 
   return (
     <Layout title="Home Page">
-      <Carousel showThumbs={false} autoPlay>
-        {featuredProducts.map((product) => (
-          <div key={product._id}>
-            <Link href={`/product/${product.slug}`} passHref className="flex">
-              <img src={product.banner} alt={product.name} />
-            </Link>
-          </div>
-        ))}
-      </Carousel>
-      <h2 className="h2 my-4">Latest Products</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
-          <ProductItem
-            product={product}
-            key={product.slug}
-            addToCartHandler={addToCartHandler}
-          ></ProductItem>
-        ))}
-      </div>
+      <h2 className=" my-4">Latest Products</h2>
+
+        <InfiniteScrollProducts products={products} addToCartHandler={addToCartHandler} /> 
+
+     
+   
+
+
     </Layout>
   );
 }
