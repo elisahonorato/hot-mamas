@@ -7,6 +7,7 @@ import db from '../utils/db';
 import { Store } from '../utils/Store';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import InfiniteScrollProducts from '../components/InfiniteScrollProducts';
+import Hero from '../components/Hero';
 
 export default function Home({ products, featuredProducts }) {
   const { state, dispatch } = useContext(Store);
@@ -33,16 +34,18 @@ export default function Home({ products, featuredProducts }) {
   };
 
   return (
-    <Layout title="Home Page">
-      <h2 className=" my-4">Latest Products</h2>
+    <div>
 
-        <InfiniteScrollProducts products={products} addToCartHandler={addToCartHandler} /> 
+      <Layout title="Home Page" className="">
+        <Hero />
+        <h2 className=" my-4">Latest Products</h2>
+        <div className='mx-4'>
+        <InfiniteScrollProducts products={products} addToCartHandler={addToCartHandler} />
+        </div>
+       
+      </Layout>
+    </div>
 
-     
-   
-
-
-    </Layout>
   );
 }
 

@@ -43,7 +43,7 @@ export default function InfiniteScrollProducts({ products, addToCartHandler }) {
   }, [visibleProducts]);
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 ">
+    <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 px-10">
       {visibleProducts.map((product, index) => (
         <div
           key={product._id}

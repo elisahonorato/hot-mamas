@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import SearchIcon from '@heroicons/react/24/outline/MagnifyingGlassIcon';
 import Image from 'next/image';
 
-export default function Layout({ title, children }) {
+export default function Layout({ title, children,className}) {
   const { status, data: session } = useSession();
 
   const { state, dispatch } = useContext(Store);
@@ -54,7 +54,7 @@ export default function Layout({ title, children }) {
         progressClassName={() => "bg-primary-light"}
         pauseOnHover={false}
       />
-      <div className={`flex flex-col justify-between bg-primary-dark text-primary-light w-full font-body`}>
+      <div className={`flex flex-col justify-between  text-primary-light font-body`}>
         <header className="bg-primary-dark z-10 fixed w-full">
           <nav className={`flex h-12 items-center px-4 justify-between shadow-md `}>
             <Link href="/" className="text-lg font-bold">
@@ -200,10 +200,10 @@ export default function Layout({ title, children }) {
           </nav>
         </header>
 
-        <main className={`bg-colored-light text-primary-dark mt-20 font-body ${menuOpen ? 'hidden' : 'flex'}`}>
-          <div className="container mx-auto">
+        <main className={`font-body flex flex-col w-full pt-8 ${menuOpen ? 'hidden' : 'flex'} ${className}`}>
+      
           {children}
-          </div>
+   
           </main>
         <footer className="flex h-10 justify-center items-center shadow-inner">
           <p>Copyright {new Date().getFullYear()} Elisa Honorato</p>

@@ -18,6 +18,7 @@ module.exports = {
       colored: {
         light: "#f3efe6",
         dark: "#0D47A1",
+        intense: "#f58748",
       },
       gray: {
         100: "#f7f7f7",

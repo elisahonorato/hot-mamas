@@ -1,6 +1,7 @@
-import React, { useRef, useEffect} from 'react';
+import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
+
 import { FaCartPlus } from "@react-icons/all-files/fa/FaCartPlus";
 
 export default function ProductItem({ product, addToCartHandler }) {
@@ -26,7 +27,7 @@ export default function ProductItem({ product, addToCartHandler }) {
   }, []);
 
   return (
-    <div ref={cardRef} className="flex flex-col border z-0 m-1 rounded-full">
+    <div ref={cardRef} className="flex flex-col border-2 rounded-lg text-primary-dark">
       <div>
         <Link href={`/product/${product.slug}`}>
           <img
