@@ -4,27 +4,29 @@ import Link from 'next/link';
 
 import { FaCartPlus } from "@react-icons/all-files/fa/FaCartPlus";
 
-export default function ProductItem({ product, addToCartHandler }) {
+export default function ProductItem({ product, addToCartHandler, animate=false }) {
   const cardRef = useRef(null);
+  if (animate) { 
+    useEffect(() => {
+      const card = cardRef.current;
 
-  useEffect(() => {
-    const card = cardRef.current;
+      const tl = gsap.timeline({ repeat: -1, delay: Math.random() * 2 });
+      tl.to(card, {
+        y: -20 + Math.random() * 10,
+        duration: 2 + Math.random() * 2,
+        ease: 'power1.inOut',
+      }).to(card, {
+        y: 0,
+        duration: 2 + Math.random() * 2,
+        ease: 'power1.inOut',
+      });
 
-    const tl = gsap.timeline({ repeat: -1, delay: Math.random() * 2 });
-    tl.to(card, {
-      y: -20 + Math.random() * 10,
-      duration: 2 + Math.random() * 2,
-      ease: 'power1.inOut',
-    }).to(card, {
-      y: 0,
-      duration: 2 + Math.random() * 2,
-      ease: 'power1.inOut',
-    });
-
-    return () => {
-      tl.kill();
-    };
-  }, []);
+      return () => {
+        tl.kill();
+      };
+    }, []);
+  
+  }
 
   return (
     <div ref={cardRef} className="flex flex-col border-2 rounded-lg text-primary-dark">
