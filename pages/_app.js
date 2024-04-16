@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 import { Barlow, Josefin_Sans } from '@next/font/google'
+import Head from 'next/head';
 
 // If loading a variable font, you don't need to specify the font weight
 
@@ -22,7 +23,17 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
           {Component.auth ? (
             <Auth adminOnly={Component.auth.adminOnly}>
+              <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>HotMamas</title>
+                <meta name="google-site-verification" content="Cl676eRtm3ZhuUKj1EhEbYUJgtd6uwZ7e2x17LQOZoM" />
+              </Head>
             <main className={`${headingFont.className} ${bodyFont.className}`}>
+              <Head>
+                <title>HotMamas</title>
+                <meta name="google-site-verification" content="Cl676eRtm3ZhuUKj1EhEbYUJgtd6uwZ7e2x17LQOZoM" />
+              </Head>
+              
               <Component {...pageProps} />
             </main>
             </Auth>

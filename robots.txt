@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://https://hot-mamas.vercel.app//sitemap.xml
