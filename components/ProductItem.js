@@ -6,8 +6,9 @@ import { FaCartPlus } from "@react-icons/all-files/fa/FaCartPlus";
 
 export default function ProductItem({ product, addToCartHandler, animate=false }) {
   const cardRef = useRef(null);
-  if (animate) { 
+ 
     useEffect(() => {
+      if (!animate) return;
       const card = cardRef.current;
 
       const tl = gsap.timeline({ repeat: -1, delay: Math.random() * 2 });
@@ -26,7 +27,7 @@ export default function ProductItem({ product, addToCartHandler, animate=false }
       };
     }, []);
   
-  }
+
 
   return (
     <div ref={cardRef} className="flex flex-col border-2 rounded-lg text-primary-dark">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 
 const images = ["image-1.jpg", "image-2.jpg", "image-3.jpg", "image-4.jpg"];
@@ -35,11 +36,11 @@ export default function Hero() {
       className="bg-colored-intense h-screen flex mt-4 px-4 pt-10 items-center relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      <img src="/logo.svg" alt="HotMamas" className="h-96 w-96 mx-auto z-10" fill="#fff000" />
+      <Image src="/logo.svg" alt="HotMamas" className="h-96 w-96 mx-auto z-10" fill="#fff000" />
 
       {/* Renderizar las imágenes estáticas */}
       {staticImages.map((position, index) => (
-        <img
+        <Image
           key={index}
           src={`/images/hero-images/${images[index % images.length]}`}
           alt={`Image ${index + 1}`}
@@ -57,7 +58,7 @@ export default function Hero() {
       {/* Renderizar las imágenes cerca del cursor del mouse */}
       {displayImages &&
         images.map((image, index) => (
-          <img
+          <Image
             key={index}
             src={`/images/hero-images/${image}`}
             alt={`Image ${index + 1}`}
